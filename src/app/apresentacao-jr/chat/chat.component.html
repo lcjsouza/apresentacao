@@ -1,0 +1,47 @@
+<div class="d-flex">
+  <div class="chat-header">
+    <img [src]="imgAi" alt="Assistente Dallara" class="avatar">
+    <div class="chat-info">
+      <h2>Dallara AI</h2>
+      <p>Seu assistente pessoal para esclarecer dúvidas sobre os projetos.</p>
+    </div>
+  </div>
+  
+  <div class="chat-wrapper">
+    <div class="chat-container">
+      <div *ngFor="let msg of messages" class="chat-bubble container-chat" [ngClass]="msg.from">
+        <ng-container *ngIf="msg.from === 'Dallara'">
+          <img [src]="imgAi" alt="Assistente Dallara" class="avatar-chat">
+        </ng-container>
+        <p [innerHTML]="msg.text"></p>
+      </div>
+      <ng-container *ngIf="loading">
+        <div class="container-chat">
+          <img [src]="imgAi" alt="Assistente Dallara" class="avatar-chat">
+          <div class="chat-bubble Dallara dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </div>
+        </div>
+      </ng-container>
+  
+      <div class="input-area" style="display: flex; flex-direction: column; gap: 8px; align-items: stretch;">
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <input [(ngModel)]="userInput" placeholder="Pergunte algo..." style="flex: 1; height: 40px;" />
+          <button (click)="sendMessage()" style="padding: 0 16px; font-size: 0.95em; height: 40px; border-radius: 8px;">Enviar</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="llm-select" style="color: #ffffff; font-size: 0.95em;">Modelo:</label>
+          <select id="llm-select" [(ngModel)]="llm" class="select-discreto" style="width: auto; min-width: unset;">
+            <option value="openai">gpt-3.5-turbo</option>
+            <option value="gemini">gemini-2.0-flash</option>
+            <option value="audio">gpt-4o-mini-tts</option>
+          </select>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

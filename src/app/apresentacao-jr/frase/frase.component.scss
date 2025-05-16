@@ -1,0 +1,19 @@
+@import "../sobre/sobre.component.scss";
+
+.ajuste-frases {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  // width: 90%;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInTexto 0.5s ease forwards;
+  }
+  
+  @keyframes fadeInTexto {
+    to {
+      opacity: 1;
+    }
+  }

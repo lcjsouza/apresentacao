@@ -1,0 +1,44 @@
+<main class="profile">
+    <!-- 1. Perfil com figura e lista de detalhes -->
+    <section class="profile__info">
+      <figure class="profile__avatar">
+        <img
+          src="../../assets/portfolio.png"
+          alt="Foto de perfil de {{ userName }}"
+        />
+      </figure>
+      <div class="profile__details">
+        <div class="profile__detail">
+          <label class="profile__label">Olá, meu nome é</label>
+          <p class="profile__value">{{ userName }}</p>
+        </div>
+        <div class="profile__detail">
+          <label class="profile__label">Mas, sou conhecido como:</label>
+          <p class="profile__value">{{ apelido }}</p>
+        </div>
+        <div class="profile__detail">
+          <label class="profile__label">Cargo</label>
+          <p class="profile__value">Desenvolvedor Front-end Pleno</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- 2. Cards de atividades -->
+    <section class="cards">
+      <ul class="cards__list">
+        <ng-container *ngFor="let section of sections">
+            <a class="card" href="{{ section.url }}">
+              <img
+                [src]="section.icon"
+                alt="{{ section.title }} icon"
+                class="card__icon"
+              />
+              <div class="card__content">
+                  <h3 class="card__title">{{ section.title }}</h3>
+                  <p class="card__description">{{ section.description }}</p>
+                </div>
+            </a>
+        </ng-container>
+      </ul>
+    </section>
+  </main>

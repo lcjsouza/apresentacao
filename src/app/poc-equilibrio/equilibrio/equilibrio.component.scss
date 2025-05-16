@@ -1,0 +1,102 @@
+/* Container do Formulário */
+.form-container {
+    max-width: 80%;  /* O formulário vai ocupar até 80% da largura da tela */
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .form-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-header h5 {
+    font-size: 24px;
+    color: #002855;
+    font-weight: bold;
+  }
+  
+  .form-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-control:focus {
+    border-color: #002855;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .form-group.col-md-6 {
+    flex: 1;
+  }
+  
+  .btn-submit {
+    background-color: #002855;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-submit:hover {
+    background-color: #001a3c;
+  }
+  
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+    }
+  }
+  
+  /* Responsividade para telas maiores */
+  @media (min-width: 1200px) {
+    .form-container {
+      max-width: 80%; /* Limita a largura para 80% da tela */
+    }
+  }
+  
+  /* Garantir que o formulário não ultrapasse 80% da tela */
+  @media (max-width: 1200px) {
+    .form-container {
+      width: 80%; /* O formulário ocupa até 80% da tela */
+    }
+  }
+  

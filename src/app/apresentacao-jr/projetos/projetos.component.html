@@ -1,0 +1,42 @@
+<div class="page-wrapper">
+    <h1>Projetos que estou atuando no momento</h1>
+    <div class="container">
+        <div class="projects-panel">
+            <div class="projects-flex">
+                <div class="project-card" 
+                    *ngFor="let projeto of projetos" 
+                    (click)="abrirChat(projeto)"
+                    [class.active]="projetoSelecionado?.title === projeto.title" 
+                    (mouseenter)="hoveredProjeto = projeto"
+                    (mouseleave)="hoveredProjeto = null">
+                    <img [src]="projeto.icon" alt="icon" />
+                    <p class="titulo">{{ projeto.title }}</p>
+
+                    <div class="dev-team" *ngIf="projetoSelecionado?.title === projeto.title && projeto.devs?.length">
+                        <p class="team-title">Time</p>
+                        <div class="avatars">
+                            <div class="avatar" *ngFor="let dev of projeto.devs">
+                                <img [src]="dev.img" [alt]="dev.name" />
+                                <span>{{ dev.name }}</span>
+                                <span>{{ dev.role }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="chat-panel" *ngIf="projetoSelecionado" [ngClass]="{ show: projetoSelecionado }">
+            <!-- Reutilizando o componente de chat existente -->
+            <app-chat [userInput]="messages" [endpointProjeto]="endpoint"></app-chat>
+            <a class="projetos" href="/frase">
+                <h2>Hora de conferir as frases!
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" viewBox="0 0 16 16" class="arrow-icon">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 1 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg></h2>
+              </a>
+        </div>
+    </div>
+</div>

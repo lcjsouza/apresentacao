@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+:host {
+  display: block;
+  font-family: "Inter", sans-serif;
+  padding: 2rem;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 2rem 0;
+  z-index: 100;
+  position: relative;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.bg-card {
+  background-image: url("../../../assets/card-bg.png");
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem;
+  width: 90%;
+}
+
+.card {
+  margin: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: left;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.texto {
+  color: #fff; /* ou #e0f7fa para um azul bem clarinho */
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.6;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-family: "Inter", sans-serif;
+  z-index: 100;
+}
+
+.avatar {
+  width: 25rem;
+  border: 2px solid #00ffc8;
+}
+
+.projetos {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5rem;
+  margin-right: 6rem;
+  text-decoration: none;     /* remove o sublinhado */
+  color: inherit;            /* herda a cor do texto do elemento pai */
+  cursor: pointer;           /* cursor padrão ao invés de "mãozinha" */
+  pointer-events: auto;      /* permite ainda clicar se quiser */
+}
+
+.arrow-icon {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  color: #fff;
+  transition: transform 0.2s ease;
+  width: 2rem;
+  height: 2rem;
+}
+
+.arrow-icon:hover {
+  transform: translateX(1rem);
+}
