@@ -56,14 +56,23 @@
   gap: 0.5rem;
   margin-top: 1rem;
 
-  input {
+  .input-select-group {
+    display: flex;
     flex: 1;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    border: none;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 1rem;
+    position: relative;
+    align-items: center;
+
+    input {
+      flex: 1;
+      padding: 0.75rem 10rem 0.75rem 1rem; // espaço para o select à direita
+      border-radius: 8px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+    }
   }
 
   button {
@@ -129,11 +138,16 @@
 }
 
 @keyframes blinkDots {
-  0% { opacity: 0.2; }
-  20% { opacity: 1; }
-  100% { opacity: 0.2; }
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
-
 
 .chat-header {
   display: flex;
@@ -151,7 +165,7 @@
   border: 2px solid #00ffc8;
 }
 
-.avatar-chat{
+.avatar-chat {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -172,35 +186,92 @@
   width: 20rem;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 5rem;
 }
 
-.container-chat{
+.container-chat {
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
-
-.select-discreto {
+// SELECT CUSTOM
+.custom-select {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 150px;
+  height: 2.2rem;
   background: transparent;
+  color: #fff;
+  font-size: 14px;
+  z-index: 2;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   border: none;
-  border-radius: 3px;
-  padding: 2px 6px;
-  font-size: 0.95em;
-  color: #fff; // texto branco
   outline: none;
-  box-shadow: none;
-  appearance: none;
-  transition: background 0.2s;
-  width: auto; 
-  min-width: unset;
+  border-radius: 1px;
+  padding-right: 10px;
+  user-select: none;
+  justify-content: flex-end;
+
+  .selected-option {
+    color: #fff;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .arrow {
+    margin-left: 10px;
+    font-size: 10px;
+    pointer-events: none;
+  }
+
+  &.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  .options-list {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: #181f24;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    margin: 0.25rem 0;
+    animation: fadeIn 0.15s;
+  }
+
+  .option {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 0;
+
+    &:hover,
+    &.selected {
+      background: #00ffc8;
+      color: #181f24;
+    }
+  }
 }
 
-.select-discreto:focus {
-  background: #222;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

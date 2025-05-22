@@ -24,11 +24,18 @@ export class ChatComponent {
   messages: Message[] = [];
   imgAi = IMAGENS.DALLARA_AI_1;
   llm = 'gemini';
+  llmOptions = [
+    { value: 'openai', label: 'GPT 3.5 Turbo' },
+    { value: 'gemini', label: 'Gemini 2.0 Flash' },
+    { value: 'audio', label: 'GPT 4o Audio' },
+  ];
+  selectOpen = false;
 
   constructor(private http: HttpClient, private textoService: TextoService) {}
 
-  sendMessage() {    
-    const endpoint = this.endpointProjeto === '' ? 'persona' : this.endpointProjeto;
+  sendMessage() {
+    const endpoint =
+      this.endpointProjeto === '' ? 'persona' : this.endpointProjeto;
 
     const message = this.userInput.trim();
     if (!message) return;
@@ -39,7 +46,7 @@ export class ChatComponent {
     this.http
       .post<{ response: string; audio: string }>(
         // `https://localhost:5000/api/chat/${endpoint}`,
-         `https://back-apresentacao.onrender.com/api/chat/${endpoint}`,
+        `https://back-apresentacao.onrender.com/api/chat/${endpoint}`,
         { message, llm: this.llm }
       )
       .subscribe({
@@ -90,5 +97,20 @@ export class ChatComponent {
     const audioUrl = URL.createObjectURL(audioBlob);
     const audio = new Audio(audioUrl);
     audio.play();
+  }
+
+  toggleSelect() {
+    this.selectOpen = !this.selectOpen;
+  }
+
+  selectOption(value: string, event: Event) {
+    this.llm = value;
+    this.selectOpen = false;
+    event.stopPropagation();
+  }
+
+  getLlmLabel(value: string): string {
+    const found = this.llmOptions.find((opt) => opt.value === value);
+    return found ? found.label : '';
   }
 }
